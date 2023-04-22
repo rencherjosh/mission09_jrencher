@@ -32,7 +32,7 @@ namespace mission09_jrencher.Infastructure
 
         public string PageAction { get; set; }
         public string PageClass { get; set; }
-        public bool PageClassesEnabled { get; set; }
+        public bool PageClassEnabled { get; set; }
         public string PageClassNormal { get; set; }
         public string PageClassSelected { get; set; }
 
@@ -48,7 +48,7 @@ namespace mission09_jrencher.Infastructure
 
                 tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i });
 
-                if(PageClassesEnabled)
+                if(PageClassEnabled)
                 {
                     tb.AddCssClass(PageClass);
                     tb.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
