@@ -1,0 +1,43 @@
+﻿@page
+@model mission09_jrencher.Pages.CartModel
+@{
+}
+
+<h2>My Cart</h2>
+
+@*Custom CSS #1 - Dark Mode Table :), Custom CSS #2 - Highlights Row On Hover*@
+<table class="table table-dark table-hover table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach(var i in Model.cart.Items)
+            {
+                <tr>
+                    <td>@i.Book.Title</td>
+                    <td>@i.Quantity</td>
+                    <td>25</td>
+                    <td>@(i.Quantity * 25)</td>
+                </tr>
+            }
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3">Total:</td>
+            <td>@Model.cart.CalculateTotal().ToString("c")</td>
+        </tr>
+    </tfoot>
+
+</table>
+
+<div>
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+</div>

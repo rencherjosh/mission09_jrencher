@@ -36,6 +36,12 @@ namespace mission09_jrencher
             });
 
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +58,8 @@ namespace mission09_jrencher
 
             //Use wwwroot
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
@@ -71,6 +79,8 @@ namespace mission09_jrencher
                     new { Controller = "Home", action = "Index", pagNum = 1 });
 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
         }
     }
